@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin, Send, Dock } from "lucide-react";
+
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -10,11 +11,14 @@ const Contact = () => {
   const handleCopy = () => {
     navigator.clipboard.writeText("souhailleaders2003@gmail.com");
     setCopied(true);
-    setTimeout(() => setCopied(false), 1500); 
+    setTimeout(() => setCopied(false), 1500);
   };
 
   return (
-    <section id="contact" className="py-24 relative">
+    <section
+      id="contact"
+      className="relative bg-secondary/30 py-24"
+    >
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -24,7 +28,9 @@ const Contact = () => {
           className="max-w-2xl mx-auto text-center"
         >
           {/* Section Title */}
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6  inline-block">
+            Get In Touch
+          </h2>
 
           {/* Description */}
           <p className="text-muted-foreground text-lg mb-8">
@@ -62,7 +68,8 @@ const Contact = () => {
             </div>
           </div>
 
-          <div className="flex w-full justify-center  gap-5 align-items-center">
+          {/* Buttons */}
+          <div className="flex w-full justify-center gap-5">
             <Button variant="hero" size="xl" asChild>
               <a
                 href="https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"

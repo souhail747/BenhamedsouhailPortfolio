@@ -1,11 +1,17 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Send } from "lucide-react";
-
+import { Mail, MapPin, Send, Dock } from "lucide-react";
 const Contact = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("souhailleaders2003@gmail.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 1500); 
+  };
 
   return (
     <section id="contact" className="py-24 relative">
@@ -18,35 +24,66 @@ const Contact = () => {
           className="max-w-2xl mx-auto text-center"
         >
           {/* Section Title */}
-          <span className="font-mono text-primary text-sm mb-4 block">
-            05. What's Next?
-          </span>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h2>
 
+          {/* Description */}
           <p className="text-muted-foreground text-lg mb-8">
-            I'm currently looking for new opportunities. Whether you have a
-            question, a project idea, or just want to say hi, my inbox is always
-            open. I'll do my best to get back to you!
+            I'm always up for new opportunities, exciting projects, or even a
+            quick hello! If you have an idea, a question, or just want to chat,
+            my inbox is open—I'll get back to you as soon as I can.
           </p>
 
           {/* Contact Info */}
           <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Mail className="text-primary" size={20} />
-              <span>hello@johndoe.dev</span>
+            {/* Email */}
+            <div className="relative cursor-pointer" onClick={handleCopy}>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Mail className="text-primary" size={20} />
+                <span>souhailleaders2003@gmail.com</span>
+              </div>
+
+              {/* Tooltip */}
+              {copied && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded-md"
+                >
+                  Copied!
+                </motion.div>
+              )}
             </div>
+
+            {/* Location */}
             <div className="flex items-center gap-2 text-muted-foreground">
               <MapPin className="text-primary" size={20} />
-              <span>San Francisco, CA</span>
+              <span>Teleporting Between Codes</span>
             </div>
           </div>
 
-          <Button variant="hero" size="xl" asChild>
-            <a href="mailto:hello@johndoe.dev">
-              <Send size={20} />
-              Say Hello
-            </a>
-          </Button>
+          <div className="flex w-full justify-center  gap-5 align-items-center">
+            <Button variant="hero" size="xl" asChild>
+              <a
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Send size={20} className="mr-2" />
+                Say Hello
+              </a>
+            </Button>
+            <Button variant="hero-outline" size="xl" asChild>
+              <a
+                href="/BenHamedSouhailEnCV.pdf"
+                download
+                rel="noopener noreferrer"
+              >
+                <Dock size={20} className="mr-2" />
+                Resume
+              </a>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </section>

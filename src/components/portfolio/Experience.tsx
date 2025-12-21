@@ -2,51 +2,40 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 
 const experiences = [
+ 
+{
+  company: "Freelance",
+  title: "Full-Stack JavaScript ",
+  period: "2025 - Present",
+  description: [
+    "Built custom full-stack JavaScript applications using React and Node.js.",
+    "Delivered projects with a focus on responsive design, performance, and maintainability.",
+    "Managed multiple client projects, ensuring on-time delivery and high satisfaction."
+  ],
+}
+,
   {
-    company: "Tech Corp",
-    title: "Senior Full-Stack Developer",
-    period: "2022 - Present",
+    company: "SheShares",
+    title: "Full-Stack Developer Intern",
+    period: "2024 ",
     description: [
-      "Lead development of core platform features using React, Node.js, and PostgreSQL, improving system performance by 40%",
-      "Mentored a team of 5 junior developers, conducting code reviews and establishing best practices",
-      "Architected and implemented microservices infrastructure handling 1M+ daily requests",
-      "Collaborated with product and design teams to deliver user-centric solutions",
+      "Developed internal tools and web applications using React and Node.js.",
+      "Collaborated with the team to implement new features and optimize performance.",
+      "Gained hands-on experience in professional software development workflows."
     ],
   },
   {
-    company: "StartUp Inc",
-    title: "Full-Stack Developer",
-    period: "2020 - 2022",
+    company: "Diploma in Computer Science - ISIMM",
+    title: "Student",
+    period: "2020 - 2024",
     description: [
-      "Built and maintained full-stack web applications using React, Express, and MongoDB",
-      "Implemented real-time features using WebSocket and Socket.io for collaborative tools",
-      "Developed RESTful APIs and integrated third-party services including Stripe and Twilio",
-      "Reduced page load times by 60% through code splitting and lazy loading optimizations",
+      "Completed a 3-year diploma program in computer science with a focus on software development, algorithms, and web technologies."
     ],
   },
-  {
-    company: "Digital Agency",
-    title: "Frontend Developer",
-    period: "2018 - 2020",
-    description: [
-      "Developed responsive web applications for 20+ clients across various industries",
-      "Created reusable component libraries that reduced development time by 30%",
-      "Implemented pixel-perfect designs from Figma and collaborated closely with designers",
-      "Introduced automated testing practices, increasing code coverage from 20% to 80%",
-    ],
-  },
-  {
-    company: "Freelance",
-    title: "Web Developer",
-    period: "2016 - 2018",
-    description: [
-      "Designed and developed custom websites for small businesses and entrepreneurs",
-      "Built e-commerce solutions using WooCommerce and custom Node.js backends",
-      "Provided ongoing maintenance and support for client websites",
-      "Managed projects from initial client meetings through to deployment",
-    ],
-  },
+  
+  
 ];
+
 
 const Experience = () => {
   const ref = useRef(null);
@@ -64,14 +53,14 @@ const Experience = () => {
           className="max-w-3xl mx-auto"
         >
           {/* Section Title */}
-          <div className="flex items-center gap-4 mb-12">
-            <span className="font-mono text-primary">04.</span>
+          <div className="flex items-center gap-4 mt-7 mb-24 ">
+            <div className="h-px bg-border flex-1 max-w-xs" />
             <h2 className="text-3xl md:text-4xl font-bold">Experience</h2>
             <div className="h-px bg-border flex-1 max-w-xs" />
           </div>
 
           {/* Tabs */}
-          <div className="flex flex-col md:flex-row gap-0 md:gap-8">
+          <div className="flex flex-col md:flex-row gap-0  mb-18 md:gap-8">
             {/* Tab List */}
             <div className="flex md:flex-col overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-border">
               {experiences.map((exp, index) => (

@@ -1,16 +1,22 @@
 {
-  "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }],
   "compilerOptions": {
-    "baseUrl": ".",
+    "target": "ESNext",                  // modern JS
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],            // include DOM + JS features
+    "jsx": "react-jsx",                   // enable JSX
+    "moduleResolution": "node",          // recommended
+    "baseUrl": ".",                       // for absolute imports
     "paths": {
       "@/*": ["./src/*"]
     },
-    "noImplicitAny": false,
-    "noUnusedParameters": false,
-    "skipLibCheck": true,
-    "allowJs": true,
+    "allowJs": true,                      // allow JS files
+    "strict": false,                      // turn off strict type checks
+    "noImplicitAny": false,               // allow implicit any
+    "skipLibCheck": true,                 // skip checking node_modules
     "noUnusedLocals": false,
+    "noUnusedParameters": false,
     "strictNullChecks": false
-  }
+  },
+  "include": ["src"],                     // include your source files
+  "exclude": ["node_modules", "dist"]     // exclude build output
 }

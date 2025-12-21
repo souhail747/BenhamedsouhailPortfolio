@@ -1,45 +1,45 @@
-import { Github, Linkedin, Twitter, Heart } from "lucide-react";
+import { Github, Linkedin, Heart ,Facebook} from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-8 border-t border-border">
+    <footer className="py-10 border-t border-border bg-secondary/20">
       <div className="container mx-auto px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+          
+          {/* Social Links */}
           <div className="flex items-center gap-6">
             <a
-              href="https://github.com"
+              href="https://github.com/souhail747"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
-              <Github size={20} />
+              <Github size={28} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/souhail-benhamed-569826242/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
-              <Linkedin size={20} />
+              <Linkedin size={28} />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://www.facebook.com/souhail.leaderi/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors duration-300"
             >
-              <Twitter size={20} />
+              <Facebook size={28} />
             </a>
           </div>
 
-          <div className="flex items-center gap-1 text-sm text-muted-foreground font-mono">
-            <span>Built with</span>
-            <Heart size={14} className="text-primary fill-primary" />
-            <span>by John Doe</span>
-          </div>
-
-          <p className="text-xs text-muted-foreground font-mono">
-            © {new Date().getFullYear()} All rights reserved.
+          {/* Footer Text */}
+          <p className="text-sm text-muted-foreground font-mono flex items-center gap-1">
+            © {new Date().getFullYear()} Made  by 
+            <span className="font-bold text-primary bg-clip-text  ">
+              Souhail
+            </span>
           </p>
         </div>
       </div>

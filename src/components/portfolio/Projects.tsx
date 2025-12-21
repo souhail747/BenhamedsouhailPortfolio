@@ -1,187 +1,218 @@
-import { motion, useInView } from "framer-motion";
+import { color, motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink, Github, Folder } from "lucide-react";
+import { ExternalLink, Github, Folder, Bold } from "lucide-react";
+import edix from "../../edix.png";
+import ecom from "../../ecomm.png";
 
 const featuredProjects = [
   {
+    id: 1,
+    title: "EdixAcademy",
+    description:
+      "A full-stack e-learning platform connecting students and tutors. Students can enroll in courses, access videos, PDFs, quizzes, and track their progress. Tutors can create courses, manage students, and conduct live sessions. Built for scalability, interactivity, and a seamless learning experience.",
+    tech: [
+      "Next.js",
+      "React",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Socket.io",
+      "AWS",
+    ],
+    github: "https://github.com/souhail747/study",
+    external: "https://edixacademy.com/",
+    image: edix,
+  },
+  {
+    id: 2,
     title: "E-Commerce Platform",
     description:
-      "A full-stack e-commerce solution with real-time inventory management, Stripe payment integration, and an admin dashboard. Built with performance and scalability in mind.",
-    tech: ["Next.js", "Node.js", "PostgreSQL", "Stripe", "Redis"],
-    github: "https://github.com",
-    external: "https://example.com",
-    image: "gradient",
-  },
-  {
-    title: "Task Management App",
-    description:
-      "A collaborative project management tool featuring real-time updates, drag-and-drop kanban boards, team chat, and automated workflow triggers.",
-    tech: ["React", "Socket.io", "Express", "MongoDB", "Docker"],
-    github: "https://github.com",
-    external: "https://example.com",
-    image: "gradient",
-  },
-  {
-    title: "AI Content Generator",
-    description:
-      "An AI-powered content creation platform that generates blog posts, social media content, and marketing copy using GPT-4 API with custom fine-tuning.",
-    tech: ["TypeScript", "OpenAI API", "NestJS", "React", "Tailwind"],
-    github: "https://github.com",
-    external: "https://example.com",
-    image: "gradient",
+      "A full-stack e-commerce web application featuring product browsing, secure user authentication, shopping cart, and online payments. Includes an admin dashboard for managing products, orders, and users. Built with performance, scalability, and a smooth user experience in mind.",
+    tech: ["React", "Firebase", "node ", "Framer Motion"],
+    github: "https://github.com/souhail747/e-comm/tree/main/e-com",
+    image: ecom,
   },
 ];
 
 const otherProjects = [
   {
-    title: "Weather Dashboard",
-    description: "Real-time weather app with location detection, 7-day forecasts, and beautiful data visualizations.",
-    tech: ["React", "Chart.js", "OpenWeather API"],
-    github: "https://github.com",
-    external: "https://example.com",
+    title: "prayer ",
+    description:
+      "A React.js web application that displays daily prayer times for any city in Tunisia, shows the next upcoming prayer, and includes a live countdown timer. Users can select their city ",
+    tech: ["React", "OpenWeather API"],
+    github: "https://github.com/souhail747/prayer-app",
   },
   {
-    title: "Crypto Portfolio Tracker",
-    description: "Track cryptocurrency investments with live price updates and portfolio analytics.",
-    tech: ["Vue.js", "Node.js", "CoinGecko API"],
-    github: "https://github.com",
+    title: "Fun4Games",
+    description:
+      "A portfolio of 4 web-based games including FlipFlaap, XO, and others, developed with JavaScript. These games showcase interactive gameplay, responsive design.",
+
+    tech: ["JavaScript", "NextJS"],
+    github: "https://github.com/souhail747/Games",
   },
   {
-    title: "Recipe Finder",
-    description: "Search and save recipes from around the world with nutritional information and meal planning.",
-    tech: ["React", "Firebase", "Spoonacular API"],
-    github: "https://github.com",
-    external: "https://example.com",
-  },
-  {
-    title: "Markdown Editor",
-    description: "A minimal markdown editor with live preview, syntax highlighting, and export options.",
-    tech: ["TypeScript", "React", "CodeMirror"],
-    github: "https://github.com",
-  },
-  {
-    title: "URL Shortener",
-    description: "Custom URL shortening service with analytics tracking and QR code generation.",
-    tech: ["Node.js", "MongoDB", "Redis"],
-    github: "https://github.com",
-    external: "https://example.com",
-  },
-  {
-    title: "Chat Application",
-    description: "Real-time messaging app with room creation, file sharing, and message encryption.",
-    tech: ["Socket.io", "Express", "React"],
-    github: "https://github.com",
+    title: "Mobile Access Scanner",
+    description:
+      "A mobile app that scans QR codes to verify user access. Responsible persons can grant access, while admins can monitor who entered and manage the number of allowed accesses.",
+    tech: ["React Native", "Firebase", "Framer Motion"],
+    github: "https://github.com/souhail747/mbobileApp",
+    external: "",
   },
 ];
 
 const Projects = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const featuredRef = useRef(null);
+  const otherRef = useRef(null);
+  const isFeaturedInView = useInView(featuredRef, {
+    once: true,
+    margin: "-100px",
+  });
+  const isOtherInView = useInView(otherRef, { once: true, margin: "-100px" });
 
   return (
     <section id="projects" className="py-24 relative">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6  ">
+        {/* Featured Projects */}
         <motion.div
-          ref={ref}
+          ref={featuredRef}
           initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          animate={isFeaturedInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
+          className="flex items-center gap-4 mb-1 max-w-4xl  mx-auto"
         >
-          {/* Section Title */}
-          <div className="flex items-center gap-4 mb-12 max-w-4xl mx-auto">
-            <span className="font-mono text-primary">03.</span>
-            <h2 className="text-3xl md:text-4xl font-bold">Featured Projects</h2>
-            <div className="h-px bg-border flex-1 max-w-xs" />
-          </div>
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <h2 className="text-3xl md:text-4xl font-bold  "> Projects</h2>
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+          <div className="h-px bg-border flex-1 max-w-xs" />
+        </motion.div>
 
-          {/* Featured Projects */}
-          <div className="space-y-24 mb-24">
-            {featuredProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 50 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className={`relative grid md:grid-cols-12 gap-4 items-center ${
-                  index % 2 === 1 ? "md:text-right" : ""
+        <div className="space-y-5 mb-24 ">
+          <h3 className="gradient-text  my-2 w-full">Featured Projects</h3>
+
+          {featuredProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isFeaturedInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="grid md:grid-cols-12 gap-6 items-center"
+            >
+              {/* Project Image */}
+              <div
+                className={`md:col-span-7 ${
+                  index % 2 === 1 ? "md:order-2" : ""
                 }`}
               >
-                {/* Project Image */}
-                <div
-                  className={`md:col-span-7 ${
-                    index % 2 === 1 ? "md:order-2" : ""
-                  }`}
+                <a
+                  href={project.external}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block relative group rounded-lg overflow-hidden cursor-pointer"
                 >
-                  <div className="relative group rounded-lg overflow-hidden">
-                    <div className="aspect-video bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 rounded-lg" />
-                    <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
-                  </div>
-                </div>
-
-                {/* Project Content */}
-                <div
-                  className={`md:col-span-6 ${
-                    index % 2 === 1
-                      ? "md:order-1 md:col-start-1"
-                      : "md:col-start-6"
-                  } md:absolute md:w-1/2 ${index % 2 === 1 ? "md:left-0" : "md:right-0"}`}
-                >
-                  <p className="font-mono text-primary text-sm mb-2">
-                    Featured Project
-                  </p>
-                  <h3 className="text-2xl font-bold mb-4">{project.title}</h3>
-                  <div className="bg-card p-6 rounded-lg card-shadow border border-border mb-4">
-                    <p className="text-muted-foreground">{project.description}</p>
-                  </div>
-                  <ul
-                    className={`flex flex-wrap gap-3 font-mono text-sm text-muted-foreground mb-4 ${
-                      index % 2 === 1 ? "md:justify-end" : ""
-                    }`}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 0.7 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 flex items-center justify-center bg-background/50 backdrop-blur-sm rounded-lg"
                   >
-                    {project.tech.map((tech) => (
-                      <li key={tech}>{tech}</li>
-                    ))}
-                  </ul>
-                  <div
-                    className={`flex gap-4 ${
-                      index % 2 === 1 ? "md:justify-end" : ""
-                    }`}
-                  >
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground hover:text-primary transition-colors"
-                    >
-                      <Github size={20} />
-                    </a>
-                    <a
-                      href={project.external}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground hover:text-primary transition-colors"
-                    >
+                    <span className="flex items-center gap-2 text-primary font-semibold">
                       <ExternalLink size={20} />
-                    </a>
-                  </div>
+                      {project.id === 1 ? "View Live" : "Github"}
+                    </span>
+                  </motion.div>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover rounded-lg"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+
+              {/* Project Content */}
+              <div
+                className={`md:col-span-5 ${
+                  index % 2 === 1 ? "md:order-1 " : ""
+                }`}
+              >
+                <motion.a
+                  href={project.id===1 ?project.external:project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-2xl font-bold mb-4 block origin-center text-foreground" // default color
+                  whileHover={{ color: "#669bbc" }} 
+                  transition={{ duration: 0.7 }} 
+                >
+                  {project.title}
+                </motion.a>
+
+                <div className="bg-card p-6 rounded-lg border border-border group hover:border-primary mb-4 transition-colors duration-300">
+                  <p className="text-muted-foreground group-hover:text-blue-200 transition-colors duration-300">
+                    {project.description}
+                  </p>
                 </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Other Projects */}
-          <div className="text-center mb-12">
-            <h3 className="text-2xl font-bold">Other Noteworthy Projects</h3>
-          </div>
+                <ul className="flex flex-wrap gap-3 font-mono text-sm text-muted-foreground mb-4">
+                  {project.tech.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+                <div className="flex gap-4">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
+                    <Github size={30} />
+                  </a>
+                  <a
+                    href={project.external}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-primary transition-colors"
+                  >
+                    { project.external && <ExternalLink size={30} /> }
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {otherProjects.map((project, index) => (
+        {/* Other Projects */}
+        <motion.div
+          ref={otherRef}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isOtherInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h3 className="text-2xl font-bold">Other Projects</h3>
+        </motion.div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {otherProjects.map((project) => (
+            <a
+              key={project.title}
+              href={project.github} // go to GitHub
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                className="bg-card p-6 rounded-lg card-shadow border border-border group hover:border-primary/50 hover:-translate-y-2 transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isOtherInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5 }}
+                className="bg-card p-6 hover:font-55 rounded-lg border border-border group hover:border-primary transition-colors cursor-pointer"
               >
                 <div className="flex justify-between items-start mb-4">
                   <Folder className="text-primary" size={40} />
@@ -208,10 +239,11 @@ const Projects = () => {
                     )}
                   </div>
                 </div>
-                <h4 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h4>
-                <p className="text-muted-foreground text-sm mb-4">
+                <h4 className="text-lg font-bold mb-2">{project.title}</h4>
+                <p
+                  className="text-muted-foreground text-sm mb-4"
+                  style={{ transition: "color 0.3s" }}
+                >
                   {project.description}
                 </p>
                 <ul className="flex flex-wrap gap-2 font-mono text-xs text-muted-foreground">
@@ -220,9 +252,9 @@ const Projects = () => {
                   ))}
                 </ul>
               </motion.div>
-            ))}
-          </div>
-        </motion.div>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

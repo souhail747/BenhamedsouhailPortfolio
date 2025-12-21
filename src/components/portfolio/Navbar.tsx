@@ -14,12 +14,28 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      let foundSection = "";
+      navLinks.forEach((link) => {
+        const section = document.querySelector(link.href) as HTMLElement | null;
+        if (section) {
+          const top = section.offsetTop - 100; // offset for navbar height
+          const bottom = top + section.offsetHeight;
+          if (window.scrollY >= top && window.scrollY < bottom) {
+            foundSection = link.href;
+          }
+        }
+      });
+      setActiveSection(foundSection);
     };
+
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // check on load
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -29,28 +45,47 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "glass-effect border-b border-border" : "bg-transparent"
+        isScrolled ? "glass-effect  border-b border-border" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <a href="#" className="font-mono text-xl font-bold gradient-text">
-            {"<Dev />"}
+            {"<Souhail />"}
           </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 text-sm font-medium"
+                className="text-sm font-medium transition-all duration-300 relative"
+                animate={{
+                  scale: activeSection === link.href ? 1.1 : 1,
+                  fontWeight: activeSection === link.href ? 700 : 500,
+                  color: activeSection === link.href ? "#a1a1aa" : "#a1a1aa",
+                }}
+                whileHover={{
+                  scale: 1.1,
+                  fontWeight: 700,
+                  color: "#a1a1aa",
+                }}
+                transition={{ duration: 0.3 }}
               >
                 {link.name}
-              </a>
+                {activeSection === link.href && (
+                  <motion.span
+                    layoutId="underline"
+                    className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-200 rounded"
+                  />
+                )}
+              </motion.a>
             ))}
-            <Button variant="hero" size="sm">
-              Resume
+            <Button variant="hero" size="sm" asChild>
+              <a href="/BenHamedSouhailEnCV.pdf" download>
+                Resume
+              </a>
             </Button>
           </div>
 
@@ -69,20 +104,28 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-4 pb-4"
+            className="md:hidden mt-4 pb-4 flex flex-col gap-2
+               bg-white/10 backdrop-blur-md border border-border rounded-lg"
           >
             {navLinks.map((link) => (
-              <a
+              <motion.a
                 key={link.name}
                 href={link.href}
-                className="block py-2 text-muted-foreground hover:text-foreground transition-colors"
+                className="block py-2 transition-colors"
+                animate={{
+                  color: activeSection === link.href ? "#a1a1aa" : "#a1a1aa",
+                }}
+                whileHover={{ color: "#ef4444" }}
+                transition={{ duration: 0.3 }}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </motion.a>
             ))}
-            <Button variant="hero" size="sm" className="mt-4 w-full">
-              Resume
+            <Button variant="hero" size="sm" asChild>
+              <a href="/BenHamedSouhailEnCV.pdf" download>
+                Resume
+              </a>
             </Button>
           </motion.div>
         )}

@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, useState, useEffect } from "react";
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import * as React from "react";
@@ -7,7 +7,9 @@ import * as React from "react";
 const HeroBackground3D = React.lazy(() => import("./HeroBackground3D"));
 const isMobile = () => {
   if (typeof navigator === "undefined") return false;
-  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 };
 
 const socialLinks = [
@@ -17,17 +19,74 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/souhail-benhamed-569826242/",
     label: "LinkedIn",
   },
-  { icon: Mail,      href: isMobile()
+  {
+    icon: Mail,
+    href: isMobile()
       ? "mailto:souhailleaders2003@gmail.com"
       : "https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com",
-    label: "Email", }
+    label: "Email",
+  },
+];
+const words = [
+  "Full-stack Websites",
+  "React Applications",
+  "Node.js APIs",
+  "RESTful Services",
+  "Real-time Dashboards",
+  "E-commerce Platforms",
+  "Interactive UI Components",
+  "Responsive Layouts",
+  "Modern Web Apps",
+  "Frontend Designs",
+  "Backend Integrations",
+  "Database-driven Apps",
+  "Cloud Deployments",
+  "Performance Optimizations",
+  "SEO-friendly Sites",
+  "Scalable Architectures",
+  "Mobile-first Websites",
+  "Custom Web Solutions",
+  "AI-powered Web Apps",
+  "Real-time Chat Systems",
+  "Interactive Dashboards",
+  "Modern UI/UX Designs"
 ];
 
 
 const Hero = () => {
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { once: false, margin: "-200px" });
+  const [text, setText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
+  const maxLength = Math.max(...words.map((w) => w.length));
+
+  useEffect(() => {
+        if (!isInView) return; // start typing only when in view
+
+    const currentWord = words[index];
+    let timer;
+
+    if (!isDeleting && text.length < currentWord.length) {
+      timer = setTimeout(
+        () => setText(currentWord.slice(0, text.length + 1)),
+        150
+      );
+    } else if (isDeleting && text.length > 0) {
+      timer = setTimeout(
+        () => setText(currentWord.slice(0, text.length - 1)),
+        100
+      );
+    } else if (!isDeleting && text.length === currentWord.length) {
+      timer = setTimeout(() => setIsDeleting(true), 800);
+    } else if (isDeleting && text.length === 0) {
+      setIsDeleting(false);
+      setIndex((prev) => (prev + 1) % words.length);
+    }
+
+    return () => clearTimeout(timer);
+  }, [text,isInView, isDeleting, index]);
   return (
     <section
       ref={heroRef}
@@ -66,7 +125,7 @@ const Hero = () => {
         {"< Souhail />"}
       </h1>
 
-       <motion.h1
+      <motion.h1
         style={{
           position: "fixed",
           left: "20%",
@@ -112,6 +171,32 @@ const Hero = () => {
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4">
           <span className="gradient-text">Souhail Benhamed</span>
         </h1>
+        {/* effect */}
+
+        <h1 className="text-2xl font-bold  pl-24 text-center flex justify-center items-center">
+          {/* Static part */}
+          <span className="text-gray-500" style={{ flexShrink: 0 }}>
+            I build&nbsp;
+          </span>
+
+          {/* Dynamic part with fixed width to prevent shifting */}
+          <span
+            style={{
+              display: "inline-block",
+              width: `${maxLength}ch`,
+              whiteSpace: "pre",
+              overflow: "hidden",
+              textAlign: "left",
+              fontWeight: "bold",
+            }}
+          >
+            <span className="text-white-500">{text}</span>
+            <span className="inline-block w-1 h-6 bg-gray-5 00 animate-blink ml-1" />
+          </span>
+
+          {/* Blinking cursor */}
+        </h1>
+
         <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-muted-foreground mb-6">
           Full-Stack JavaScript Developer
         </h2>

@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button";
 import * as React from "react";
 
 const HeroBackground3D = React.lazy(() => import("./HeroBackground3D"));
+const isMobile = () => {
+  if (typeof navigator === "undefined") return false;
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/souhail747", label: "GitHub" },
@@ -13,8 +17,12 @@ const socialLinks = [
     href: "https://www.linkedin.com/in/souhail-benhamed-569826242/",
     label: "LinkedIn",
   },
-  { icon: Mail, href: "mailto:souhailleaders2003@gmail.com", label: "Email" },
+  { icon: Mail,      href: isMobile()
+      ? "mailto:souhailleaders2003@gmail.com"
+      : "https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com",
+    label: "Email", }
 ];
+
 
 const Hero = () => {
   const heroRef = useRef(null);

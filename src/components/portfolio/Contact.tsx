@@ -3,6 +3,10 @@ import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin , Send, Dock } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
+const isMobile = () => {
+  if (typeof navigator === "undefined") return false;
+  return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
 
 const Contact = () => {
   const ref = useRef(null);
@@ -69,17 +73,18 @@ const Contact = () => {
 
       {/* Buttons */}
 <div className="flex flex-col sm:flex-row w-full justify-center gap-5">
-  <Button variant="hero" size="xl" asChild>
-    <a
-      href="https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-center"
-    >
-      <Send size={20} className="mr-2" />
-      Say Hello
-    </a>
-  </Button>
+<Button variant="hero" size="xl" asChild>
+  <a
+    href={isMobile() ? "mailto:souhailleaders2003@gmail.com" : "https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-center"
+  >
+    <Send size={20} className="mr-2" />
+    Say Hello
+  </a>
+</Button>
+
   <Button variant="hero2" size="xl" asChild>
     <a
       href="https://wa.me/21629438905"

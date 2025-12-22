@@ -31,72 +31,6 @@ const useClickReaction = (baseSpeed: number) => {
   return { clicked, velocity, handleClick, setVelocity };
 };
 
-// Floating 3D Text
-const Floating3DText = ({
-  text,
-  position,
-  scale = 1,
-  speed = 1,
-  color = "#fff",
-  limit = 20,
-}: {
-  text: string;
-  position: [number, number, number];
-  scale?: number;
-  speed?: number;
-  color?: string;
-  limit?: number;
-}) => {
-  const ref = useRef<THREE.Mesh>(null);
-  const { clicked, velocity, handleClick, setVelocity } = useClickReaction(speed);
-  const clickOffset = useRef({ x: 0, y: 0, rotY: 0 });
-
-  useFrame((state, delta) => {
-    if (ref.current) {
-      if (clicked) {
-        clickOffset.current.x += velocity.x * delta;
-        clickOffset.current.y += velocity.y * delta;
-        clickOffset.current.rotY += velocity.rotY * delta;
-        setVelocity(prev => ({
-          ...prev,
-          x: prev.x * 0.95,
-          y: prev.y * 0.95 - delta * 2,
-          rotY: prev.rotY * 0.95
-        }));
-      } else {
-        clickOffset.current.x *= 0.95;
-        clickOffset.current.y *= 0.95;
-        clickOffset.current.rotY *= 0.95;
-      }
-      
-      ref.current.position.x += speed;
-      ref.current.position.x += clickOffset.current.x * delta;
-      ref.current.position.y = position[1] + clickOffset.current.y;
-      ref.current.rotation.y = clickOffset.current.rotY;
-      
-      if (ref.current.position.x > limit) {
-        ref.current.position.x = -limit;
-      }
-    }
-  });
-
-  return (
-    <Text
-      ref={ref}
-      position={position}
-      scale={clicked ? scale * 1.2 : scale}
-      color={clicked ? "#ffffff" : color}
-      fontSize={1}
-      anchorX="center"
-      anchorY="middle"
-      onClick={handleClick}
-      onPointerOver={() => document.body.style.cursor = 'pointer'}
-      onPointerOut={() => document.body.style.cursor = 'default'}
-    >
-      {text}
-    </Text>
-  );
-};
 
 const JSLogo = ({
   position,
@@ -731,14 +665,6 @@ const Scene = () => {
       <NodeLogo position={[2, -12, -6]} speed={0.7} scale={0.8} />
       <NodeLogo position={[-10, -14, -6]} speed={0.7} scale={0.8} />
 
-      <Floating3DText
-        text="REACTJS"
-        position={[-19, -7, -5]}
-        scale={1.5}
-        speed={0.04}
-        color="#bde0fe"
-        limit={25}
-      />
 
       <ReactLogo position={[7, -6, -7]} speed={0.6} scale={1} />
       <ReactLogo position={[-19, -3, -15]} speed={0.6} scale={1} />

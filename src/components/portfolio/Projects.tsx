@@ -45,8 +45,8 @@ const otherProjects = [
   {
     title: "Fun4Games",
     description:
-      "Portfolio of 4 web-based games showing interactive gameplay and responsive design.",
-    tech: ["JavaScript", "NextJS"],
+"Four web-based games featuring interactive gameplay and responsive design."
+,    tech: ["JavaScript", "NextJS"],
     github: "https://github.com/souhail747/Games",
     external: "",
   },

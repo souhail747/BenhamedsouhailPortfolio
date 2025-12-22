@@ -38,33 +38,34 @@ const Contact = () => {
           </p>
 
           {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row justify-center gap-6 mb-8">
-            {/* Email */}
-            <div className="relative cursor-pointer" onClick={handleCopy}>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="text-primary" size={20} />
-                <span>souhailleaders2003@gmail.com</span>
-              </div>
+         <div className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+  {/* Email */}
+  <div className="relative cursor-pointer" onClick={handleCopy}>
+    <div className="flex items-center gap-2 text-muted-foreground">
+      <Mail className="text-primary" size={20} />
+      <span>souhailleaders2003@gmail.com</span>
+    </div>
 
-              {/* Tooltip */}
-              {copied && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded-md"
-                >
-                  Copied!
-                </motion.div>
-              )}
-            </div>
+    {/* Tooltip */}
+    {copied && (
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -10 }}
+        className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded-md"
+      >
+        Copied!
+      </motion.div>
+    )}
+  </div>
 
-            {/* Location */}
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="text-primary" size={20} />
-              <span>Teleporting Between Codes</span>
-            </div>
-          </div>
+  {/* Location */}
+  <div className="flex items-center gap-2 text-muted-foreground">
+    <MapPin className="text-primary" size={20} />
+    <span>Teleporting Between Codes</span>
+  </div>
+</div>
+
 
       {/* Buttons */}
 <div className="flex flex-col sm:flex-row w-full justify-center gap-5">

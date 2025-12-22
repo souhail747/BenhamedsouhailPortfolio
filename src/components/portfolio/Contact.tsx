@@ -66,29 +66,32 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* Buttons */}
-          <div className="flex w-full justify-center gap-5">
-            <Button variant="hero" size="xl" asChild>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Send size={20} className="mr-2" />
-                Say Hello
-              </a>
-            </Button>
-            <Button variant="hero2" size="xl" asChild>
-              <a
-                href="https://wa.me/21629438905"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FaWhatsapp size={20}  />
-                WhatsApp
-              </a>
-            </Button>
-          </div>
+      {/* Buttons */}
+<div className="flex flex-col sm:flex-row w-full justify-center gap-5">
+  <Button variant="hero" size="xl" asChild>
+    <a
+      href="https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center"
+    >
+      <Send size={20} className="mr-2" />
+      Say Hello
+    </a>
+  </Button>
+  <Button variant="hero2" size="xl" asChild>
+    <a
+      href="https://wa.me/21629438905"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center"
+    >
+      <FaWhatsapp size={20} className="mr-2" />
+      WhatsApp
+    </a>
+  </Button>
+</div>
+
         </motion.div>
       </div>
     </section>

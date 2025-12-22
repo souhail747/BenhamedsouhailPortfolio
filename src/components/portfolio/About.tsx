@@ -10,7 +10,9 @@ const About = () => {
     <section id="about" className="py-24 relative bg-secondary/10">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="flex items-center gap-4 mb-12">
-          <h2 className="text-4xl md:text-5xl border-b-2 border-primary font-bold">About Me</h2>
+          <h2 className="text-4xl md:text-5xl border-b-2 border-primary font-bold">
+            About Me
+          </h2>
           <div className="h-px bg-border flex-1 max-w-xs" />
         </div>
 
@@ -18,16 +20,31 @@ const About = () => {
           {/* Text Content */}
           <div className="md:w-1/2 space-y-4 text-muted-foreground text-lg">
             <p>
-              Hello! I'm Souhail Ben Hamed, a passionate full-stack JavaScript developer. I enjoy creating interactive web applications using React, Node.js, and PostgreSQL.
+              Hello! I'm Souhail Ben Hamed, a passionate full-stack JavaScript
+              developer. I enjoy creating interactive and modern web
+              applications using React and Node.js.
             </p>
             <p>
-              My journey started at ISIMM, completing my Diploma in Computer Science. Since then, I’ve worked on freelance projects and internships.
+              I hold a degree in Computer Science and have gained experience
+              working on freelance projects and internships, building practical
+              skills in web development.
             </p>
+
             <p>Technologies I use recently:</p>
             <ul className="grid grid-cols-2 gap-2 font-mono text-sm mt-4">
-              {["JavaScript", "TypeScript", "React", "Node.js", "Next.js", "PostgreSQL", "MongoDB", "GraphQL"].map((tech) => (
+              {[
+                "JavaScript",
+                "TypeScript",
+                "React",
+                "Node.js",
+                "Next.js",
+                "PostgreSQL",
+                "MongoDB",
+                "GraphQL",
+              ].map((tech) => (
                 <li key={tech} className="flex items-center gap-2">
-                  <span className="text-primary">▹</span>{tech}
+                  <span className="text-primary">▹</span>
+                  {tech}
                 </li>
               ))}
             </ul>

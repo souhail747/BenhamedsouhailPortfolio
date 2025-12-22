@@ -44,7 +44,9 @@ const skillCategories = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-24 bg-secondary/30">
+    <section id="skills" className="py-24 bg-secondary/30" style={{
+   zIndex:50
+  }}>
       <div className="container mx-auto px-6">
         <div className="flex items-center gap-4 mt-7 mb-24">
           <div className="h-px bg-border flex-1 max-w-xs" />

@@ -1,7 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Send, Dock } from "lucide-react";
+import { Mail, MapPin , Send, Dock } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 const Contact = () => {
   const ref = useRef(null);
@@ -15,10 +16,7 @@ const Contact = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="relative bg-secondary/30 py-24"
-    >
+    <section id="contact" className="relative bg-secondary/30 py-24">
       <div className="container mx-auto px-6">
         <motion.div
           ref={ref}
@@ -80,14 +78,14 @@ const Contact = () => {
                 Say Hello
               </a>
             </Button>
-            <Button variant="hero-outline" size="xl" asChild>
+            <Button variant="hero2" size="xl" asChild>
               <a
-                href="/BenHamedSouhailEnCV.pdf"
-                download
+                href="https://wa.me/21629438905"
+                target="_blank"
                 rel="noopener noreferrer"
               >
-                <Dock size={20} className="mr-2" />
-                Resume
+                <FaWhatsapp size={20}  />
+                WhatsApp
               </a>
             </Button>
           </div>

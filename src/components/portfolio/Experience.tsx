@@ -23,7 +23,7 @@ const experiences = [
     ],
   },
   {
-    company: "Diploma in Computer Science - ISIMM",
+    company: "BSc in Computer Science - ISIMM",
     title: "Student",
     period: "2020 - 2024",
     description: [

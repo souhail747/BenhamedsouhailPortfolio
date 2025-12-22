@@ -9,7 +9,7 @@ const HeroBackground3D = React.lazy(() => import("./HeroBackground3D"));
 const socialLinks = [
   { icon: Github, href: "https://github.com/souhail747", label: "GitHub" },
   { icon: Linkedin, href: "https://www.linkedin.com/in/souhail-benhamed-569826242/", label: "LinkedIn" },
-  { icon: Mail, href: "mailto:souhailleaders2003@gmail.com", label: "Email" },
+  { icon: Mail, href: "https://mail.google.com/mail/?view=cm&fs=1&to=souhailleaders2003@gmail.com", label: "Email" },
 ];
 
 const Hero = () => {

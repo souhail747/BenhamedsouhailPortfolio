@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Navbar from "@/components/portfolio/Navbar";
+import Chatbot from "@/components/portfolio/chatbot";
 import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
 import Skills from "@/components/portfolio/Skills";
@@ -10,7 +11,6 @@ import Footer from "@/components/portfolio/Footer";
 
 const Index = () => {
   useEffect(() => {
-    // Add dark mode by default
     document.documentElement.classList.add("dark");
   }, []);
 
@@ -18,6 +18,8 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
+
+        <Chatbot/>
         <Hero />
         <About />
         <Skills />

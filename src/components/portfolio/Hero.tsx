@@ -63,7 +63,7 @@ const Hero = () => {
   const maxLength = Math.max(...words.map((w) => w.length));
 
   useEffect(() => {
-        if (!isInView) return; // start typing only when in view
+        if (!isInView) return; 
 
     const currentWord = words[index];
     let timer;
@@ -87,6 +87,8 @@ const Hero = () => {
 
     return () => clearTimeout(timer);
   }, [text,isInView, isDeleting, index]);
+
+  
   return (
     <section
       ref={heroRef}

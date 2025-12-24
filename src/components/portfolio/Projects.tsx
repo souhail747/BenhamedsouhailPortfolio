@@ -1,6 +1,6 @@
 import { ExternalLink, Github, Folder } from "lucide-react";
 import edix from "../../edix.png";
-import ecom from "../../ecomm.png";
+import ecom from "../../luxe.png";
 
 const featuredProjects = [
   {
@@ -22,15 +22,17 @@ const featuredProjects = [
     image: edix,
   },
   {
-    id: 2,
-    title: "E-Commerce Platform",
-    description:
-      "Robust full-stack e-commerce platform featuring product browsing, secure user authentication, shopping cart functionality, seamless payment integration, and a comprehensive admin dashboard for efficient store management.",
-    tech: ["React", "Firebase", "Node", "Framer Motion"],
-    github: "https://github.com/souhail747/e-comm/tree/main/e-com",
-    external: "",
-    image: ecom,
-  },
+
+  id: 1,
+  title: "Luxe Shop",
+  description:
+    "Full-featured e-commerce platform built with modern technologies. Includes product browsing, secure authentication, shopping cart, wishlist, smooth animations, dark/light theme, seamless payment integration, and an admin dashboard for managing products, orders, and users efficiently.",
+  tech: ["React", "TailwindCSS", "Node.js", "Framer Motion", "Zustand"],
+  github: "https://github.com/souhail747/luxe",
+  external: "https://shopluxe74.vercel.app", 
+  image: ecom,
+}
+
 ];
 
 const otherProjects = [

@@ -29,7 +29,7 @@ const featuredProjects = [
     "Full-featured e-commerce platform built with modern technologies. Includes product browsing, secure authentication, shopping cart, wishlist, smooth animations, dark/light theme, seamless payment integration, and an admin dashboard for managing products, orders, and users efficiently.",
   tech: ["React", "TailwindCSS", "Node.js", "Framer Motion", "Zustand"],
   github: "https://github.com/souhail747/luxe",
-  external: "https://shopluxe74.vercel.app", 
+  external: "https://luxebybenhamedsouhail.vercel.app/", 
   image: ecom,
 }
 

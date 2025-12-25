@@ -27,7 +27,8 @@ const experiences = [
     title: "Student",
     period: "2020 - 2024",
     description: [
-"Completed a 3-year computer science program specializing in software development, algorithms, and web technologies."    ],
+      "Completed a 3-year computer science program specializing in software development, algorithms, and web technologies.",
+    ],
   },
 ];
 
